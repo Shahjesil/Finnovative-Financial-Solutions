@@ -72,27 +72,44 @@ export default function Navbar({ onNavigate, activeSection }: NavbarProps) {
 
           {/* Desktop Links */}
           <div id="desktop-menu" className="hidden md:flex items-center gap-1">
-            {navLinks.map((link) => (
-              <button
-                key={link.id}
-                id={`link-${link.id}`}
-                onClick={() => handleLinkClick(link.id)}
-                className={`relative px-4 py-2 rounded-lg text-sm font-medium transition-colors duration-200 ${
-                  activeSection === link.id
-                    ? 'text-emerald-700'
-                    : 'text-slate-600 hover:text-slate-900 hover:bg-slate-50'
-                }`}
-              >
-                {link.label}
-                {activeSection === link.id && (
-                  <motion.div
-                    layoutId="navbar-indicator"
-                    className="absolute bottom-0 left-4 right-4 h-0.5 bg-emerald-600 rounded-full"
-                    transition={{ type: 'spring', stiffness: 350, damping: 30 }}
-                  />
-                )}
-              </button>
-            ))}
+            {navLinks.map((link) => {
+              if (link.id === 'privacy-policy') {
+                return (
+                  <a
+                    key={link.id}
+                    id={`link-${link.id}`}
+                    href="/privacy-policy"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="relative px-4 py-2 rounded-lg text-sm font-medium transition-colors duration-200 text-slate-600 hover:text-slate-900 hover:bg-slate-50 flex items-center gap-1 group"
+                  >
+                    {link.label}
+                    <ArrowUpRight className="w-3.5 h-3.5 opacity-60 group-hover:opacity-100 transition-opacity" />
+                  </a>
+                );
+              }
+              return (
+                <button
+                  key={link.id}
+                  id={`link-${link.id}`}
+                  onClick={() => handleLinkClick(link.id)}
+                  className={`relative px-4 py-2 rounded-lg text-sm font-medium transition-colors duration-200 ${
+                    activeSection === link.id
+                      ? 'text-emerald-700'
+                      : 'text-slate-600 hover:text-slate-900 hover:bg-slate-50'
+                  }`}
+                >
+                  {link.label}
+                  {activeSection === link.id && (
+                    <motion.div
+                      layoutId="navbar-indicator"
+                      className="absolute bottom-0 left-4 right-4 h-0.5 bg-emerald-600 rounded-full"
+                      transition={{ type: 'spring', stiffness: 350, damping: 30 }}
+                    />
+                  )}
+                </button>
+              );
+            })}
           </div>
 
           {/* Consultation CTA */}
@@ -133,20 +150,38 @@ export default function Navbar({ onNavigate, activeSection }: NavbarProps) {
             className="md:hidden bg-white border-b border-slate-100 overflow-hidden"
           >
             <div className="px-4 pt-2 pb-6 space-y-1">
-              {navLinks.map((link) => (
-                <button
-                  key={link.id}
-                  id={`mobile-link-${link.id}`}
-                  onClick={() => handleLinkClick(link.id)}
-                  className={`block w-full text-left px-4 py-3 rounded-xl text-base font-medium transition-colors ${
-                    activeSection === link.id
-                      ? 'bg-emerald-50 text-emerald-800'
-                      : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900'
-                  }`}
-                >
-                  {link.label}
-                </button>
-              ))}
+              {navLinks.map((link) => {
+                if (link.id === 'privacy-policy') {
+                  return (
+                    <a
+                      key={link.id}
+                      id={`mobile-link-${link.id}`}
+                      href="/privacy-policy"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={() => setIsOpen(false)}
+                      className="flex items-center justify-between px-4 py-3 rounded-xl text-base font-medium transition-colors text-slate-600 hover:bg-slate-50 hover:text-slate-900"
+                    >
+                      <span>{link.label}</span>
+                      <ArrowUpRight className="w-4 h-4 opacity-60" />
+                    </a>
+                  );
+                }
+                return (
+                  <button
+                    key={link.id}
+                    id={`mobile-link-${link.id}`}
+                    onClick={() => handleLinkClick(link.id)}
+                    className={`block w-full text-left px-4 py-3 rounded-xl text-base font-medium transition-colors ${
+                      activeSection === link.id
+                        ? 'bg-emerald-50 text-emerald-800'
+                        : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900'
+                    }`}
+                  >
+                    {link.label}
+                  </button>
+                );
+              })}
               <div className="pt-4 px-4">
                 <button
                   id="mobile-nav-cta-btn"

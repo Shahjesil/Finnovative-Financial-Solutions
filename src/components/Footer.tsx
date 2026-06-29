@@ -132,26 +132,32 @@ export default function Footer({ onSelectDocument }: FooterProps) {
             &copy; {new Date().getFullYear()} Finnovative Financial Solutions. All rights reserved.
           </div>
           <div className="flex gap-4">
-            <button
-              onClick={() => onSelectDocument?.('privacy')}
+            <a
+              href="/privacy-policy"
+              target="_blank"
+              rel="noopener noreferrer"
               className="hover:text-slate-400 transition-colors cursor-pointer"
             >
               Privacy Policy
-            </button>
+            </a>
             <span className="text-slate-900">&bull;</span>
-            <button
-              onClick={() => onSelectDocument?.('terms')}
+            <a
+              href="/terms-of-service"
+              target="_blank"
+              rel="noopener noreferrer"
               className="hover:text-slate-400 transition-colors cursor-pointer"
             >
               Terms of Service
-            </button>
+            </a>
             <span className="text-slate-900">&bull;</span>
-            <button
-              onClick={() => onSelectDocument?.('compliance')}
+            <a
+              href="/compliance"
+              target="_blank"
+              rel="noopener noreferrer"
               className="hover:text-slate-400 transition-colors cursor-pointer"
             >
               Compliance Audits
-            </button>
+            </a>
           </div>
         </div>
 

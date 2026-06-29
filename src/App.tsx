@@ -18,7 +18,34 @@ export default function App() {
   const [activeSection, setActiveSection] = useState('hero');
   
   // State for navigating to legal documents
-  const [legalDocument, setLegalDocument] = useState<'privacy' | 'terms' | 'compliance' | null>(null);
+  const [legalDocument, setLegalDocument] = useState<'privacy' | 'terms' | 'compliance' | null>(() => {
+    const path = window.location.pathname;
+    if (path.includes('privacy-policy')) return 'privacy';
+    if (path.includes('terms-of-service')) return 'terms';
+    if (path.includes('compliance')) return 'compliance';
+    return null;
+  });
+
+  // Set active section on load if a legal document is initially open
+  useEffect(() => {
+    if (legalDocument) {
+      setActiveSection('privacy-policy');
+    }
+  }, []);
+
+  // Sync URL with legalDocument state in browser history
+  useEffect(() => {
+    const currentPath = window.location.pathname;
+    if (legalDocument === 'privacy' && !currentPath.includes('privacy-policy')) {
+      window.history.pushState(null, '', '/privacy-policy');
+    } else if (legalDocument === 'terms' && !currentPath.includes('terms-of-service')) {
+      window.history.pushState(null, '', '/terms-of-service');
+    } else if (legalDocument === 'compliance' && !currentPath.includes('compliance')) {
+      window.history.pushState(null, '', '/compliance');
+    } else if (legalDocument === null && currentPath !== '/') {
+      window.history.pushState(null, '', '/');
+    }
+  }, [legalDocument]);
   
   // States for pre-filling consultation form from actions
   const [preFilledService, setPreFilledService] = useState<'Mutual Fund' | 'Insurance' | 'Comprehensive Wealth Management' | 'Other' | null>(null);
