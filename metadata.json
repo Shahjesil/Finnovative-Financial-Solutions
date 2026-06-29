@@ -1,0 +1,6 @@
+{
+  "name": "Finnovative Financial Solutions",
+  "description": "Your trusted platform for comprehensive Mutual Fund advisory, Insurance planning, and smart interactive wealth calculators.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
