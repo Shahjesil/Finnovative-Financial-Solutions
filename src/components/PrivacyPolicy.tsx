@@ -171,7 +171,7 @@ export default function PrivacyPolicy({ initialTab, onBackToHome }: PrivacyPolic
               <div className="mt-3 space-y-2.5 text-xs">
                 <div className="flex justify-between border-b border-emerald-900/60 pb-1.5">
                   <span className="text-emerald-400">AMFI Mutual Fund ID:</span>
-                  <span className="font-mono font-medium text-white">ARN-23483321</span>
+                  <span className="font-mono font-medium text-white">ARN-154730</span>
                 </div>
                 <div className="flex justify-between border-b border-emerald-900/60 pb-1.5">
                   <span className="text-emerald-400">IRDAI Corporate Agent:</span>
@@ -364,7 +364,7 @@ export default function PrivacyPolicy({ initialTab, onBackToHome }: PrivacyPolic
                       <span className="text-cyan-600">1.</span> Professional Status as a Distributor
                     </h3>
                     <p>
-                      Finnovative acts as an {highlightText("AMFI Registered Mutual Fund Distributor (ARN-23483321)", searchQuery)}. We do not direct direct advisory schemes without referral disclosures:
+                      Finnovative acts as an {highlightText("AMFI Registered Mutual Fund Distributor (ARN-154730)", searchQuery)}. We do not direct direct advisory schemes without referral disclosures:
                     </p>
                     <ul className="list-disc pl-5 space-y-1 text-slate-600">
                       <li>We distribute regular plans of Mutual Fund schemes and receive distribution commissions from Asset Management Companies as legally permitted by SEBI.</li>
@@ -455,7 +455,7 @@ export default function PrivacyPolicy({ initialTab, onBackToHome }: PrivacyPolic
                         <h4 className="font-bold text-xs text-slate-900 uppercase font-mono">Mutual Fund ARN</h4>
                       </div>
                       <p className="text-xs text-slate-600">
-                        <strong>ID:</strong> ARN-23483321 <br />
+                        <strong>ID:</strong> ARN-154730 <br />
                         <strong>Registrant:</strong> Finnovative Financial Solutions <br />
                         <strong>Valid thru:</strong> Dec 2031 <br />
                         <strong>Authority:</strong> Association of Mutual Funds in India (AMFI).

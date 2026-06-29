@@ -30,7 +30,8 @@ export default function Navbar({ onNavigate, activeSection }: NavbarProps) {
     { id: 'insurance', label: 'Insurance' },
     { id: 'calculators', label: 'Calculators' },
     { id: 'faqs', label: 'FAQs' },
-    { id: 'contact', label: 'Contact Us' }
+    { id: 'contact', label: 'Contact Us' },
+    { id: 'privacy-policy', label: 'Privacy Policy' }
   ];
 
   const handleLinkClick = (id: string) => {

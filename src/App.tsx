@@ -26,6 +26,15 @@ export default function App() {
 
   // Handle manual navigation scrolling
   const handleNavigate = (sectionId: string) => {
+    if (sectionId === 'privacy-policy') {
+      setLegalDocument('privacy');
+      setActiveSection('privacy-policy');
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+      return;
+    }
     setLegalDocument(null);
     setTimeout(() => {
       const el = document.getElementById(sectionId);
@@ -66,6 +75,7 @@ export default function App() {
   // Scroll Listener / Intersection Observer to automatically highlight active section
   useEffect(() => {
     const handleScroll = () => {
+      if (legalDocument) return; // Skip if showing privacy/terms page
       const sections = ['hero', 'mutual-funds', 'insurance', 'calculators', 'faqs', 'contact'];
       const scrollPosition = window.scrollY + 120; // offset factor
 
@@ -84,7 +94,14 @@ export default function App() {
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [legalDocument]);
+
+  // Scroll to top when legalDocument is opened
+  useEffect(() => {
+    if (legalDocument) {
+      window.scrollTo({ top: 0, behavior: 'instant' as ScrollBehavior });
+    }
+  }, [legalDocument]);
 
   return (
     <div id="app-root" className="min-h-screen bg-slate-50 flex flex-col justify-between">
@@ -133,7 +150,10 @@ export default function App() {
         {legalDocument ? (
           <PrivacyPolicy 
             initialTab={legalDocument} 
-            onBackToHome={() => setLegalDocument(null)} 
+            onBackToHome={() => {
+              setLegalDocument(null);
+              setActiveSection('hero');
+            }} 
           />
         ) : (
           <>
@@ -163,7 +183,10 @@ export default function App() {
       </main>
 
       {/* Footer */}
-      <Footer onSelectDocument={(doc) => setLegalDocument(doc)} />
+      <Footer onSelectDocument={(doc) => {
+        setLegalDocument(doc);
+        setActiveSection('privacy-policy');
+      }} />
     </div>
   );
 }
