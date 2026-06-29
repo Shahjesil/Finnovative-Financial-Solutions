@@ -20,9 +20,10 @@ export default function App() {
   // State for navigating to legal documents
   const [legalDocument, setLegalDocument] = useState<'privacy' | 'terms' | 'compliance' | null>(() => {
     const path = window.location.pathname;
-    if (path.includes('privacy-policy')) return 'privacy';
-    if (path.includes('terms-of-service')) return 'terms';
-    if (path.includes('compliance')) return 'compliance';
+    const search = window.location.search;
+    if (path.includes('privacy-policy') || search.includes('page=privacy-policy')) return 'privacy';
+    if (path.includes('terms-of-service') || search.includes('page=terms-of-service')) return 'terms';
+    if (path.includes('compliance') || search.includes('page=compliance')) return 'compliance';
     return null;
   });
 
@@ -35,15 +36,15 @@ export default function App() {
 
   // Sync URL with legalDocument state in browser history
   useEffect(() => {
-    const currentPath = window.location.pathname;
-    if (legalDocument === 'privacy' && !currentPath.includes('privacy-policy')) {
-      window.history.pushState(null, '', '/privacy-policy');
-    } else if (legalDocument === 'terms' && !currentPath.includes('terms-of-service')) {
-      window.history.pushState(null, '', '/terms-of-service');
-    } else if (legalDocument === 'compliance' && !currentPath.includes('compliance')) {
-      window.history.pushState(null, '', '/compliance');
-    } else if (legalDocument === null && currentPath !== '/') {
-      window.history.pushState(null, '', '/');
+    const currentSearch = window.location.search;
+    if (legalDocument === 'privacy' && !currentSearch.includes('page=privacy-policy')) {
+      window.history.pushState(null, '', '?page=privacy-policy');
+    } else if (legalDocument === 'terms' && !currentSearch.includes('page=terms-of-service')) {
+      window.history.pushState(null, '', '?page=terms-of-service');
+    } else if (legalDocument === 'compliance' && !currentSearch.includes('page=compliance')) {
+      window.history.pushState(null, '', '?page=compliance');
+    } else if (legalDocument === null && currentSearch !== '') {
+      window.history.pushState(null, '', window.location.pathname);
     }
   }, [legalDocument]);
   

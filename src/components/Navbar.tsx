@@ -78,7 +78,7 @@ export default function Navbar({ onNavigate, activeSection }: NavbarProps) {
                   <a
                     key={link.id}
                     id={`link-${link.id}`}
-                    href="/privacy-policy"
+                    href="?page=privacy-policy"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="relative px-4 py-2 rounded-lg text-sm font-medium transition-colors duration-200 text-slate-600 hover:text-slate-900 hover:bg-slate-50 flex items-center gap-1 group"
@@ -156,7 +156,7 @@ export default function Navbar({ onNavigate, activeSection }: NavbarProps) {
                     <a
                       key={link.id}
                       id={`mobile-link-${link.id}`}
-                      href="/privacy-policy"
+                      href="?page=privacy-policy"
                       target="_blank"
                       rel="noopener noreferrer"
                       onClick={() => setIsOpen(false)}

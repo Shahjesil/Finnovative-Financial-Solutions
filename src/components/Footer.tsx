@@ -133,7 +133,7 @@ export default function Footer({ onSelectDocument }: FooterProps) {
           </div>
           <div className="flex gap-4">
             <a
-              href="/privacy-policy"
+              href="?page=privacy-policy"
               target="_blank"
               rel="noopener noreferrer"
               className="hover:text-slate-400 transition-colors cursor-pointer"
@@ -142,7 +142,7 @@ export default function Footer({ onSelectDocument }: FooterProps) {
             </a>
             <span className="text-slate-900">&bull;</span>
             <a
-              href="/terms-of-service"
+              href="?page=terms-of-service"
               target="_blank"
               rel="noopener noreferrer"
               className="hover:text-slate-400 transition-colors cursor-pointer"
@@ -151,7 +151,7 @@ export default function Footer({ onSelectDocument }: FooterProps) {
             </a>
             <span className="text-slate-900">&bull;</span>
             <a
-              href="/compliance"
+              href="?page=compliance"
               target="_blank"
               rel="noopener noreferrer"
               className="hover:text-slate-400 transition-colors cursor-pointer"
